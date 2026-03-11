@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AdPilot Project Hub</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#121933;
+      --panel-2:#182142;
+      --text:#eef2ff;
+      --muted:#b5bfdc;
+      --line:#2a3563;
+      --brand:#6ea8fe;
+      --shadow:0 20px 50px rgba(0,0,0,.28);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;
+      background:linear-gradient(180deg,#09101f 0%,#0b1020 100%);
+      color:var(--text);
+    }
+    a{color:inherit;text-decoration:none}
+    .layout{display:flex;min-height:100vh}
+    .sidebar{
+      width:320px;
+      position:sticky;
+      top:0;
+      height:100vh;
+      overflow:auto;
+      background:rgba(10,15,32,.9);
+      border-left:1px solid var(--line);
+      backdrop-filter:blur(14px);
+      padding:24px 18px 28px;
+    }
+    .brand{
+      background:linear-gradient(135deg,rgba(110,168,254,.14),rgba(110,168,254,.05));
+      border:1px solid rgba(110,168,254,.18);
+      border-radius:22px;
+      padding:18px 16px;
+      margin-bottom:18px;
+      box-shadow:var(--shadow);
+    }
+    .brand h1{margin:0 0 6px;font-size:24px}
+    .brand p{margin:0;color:var(--muted);font-size:13px;line-height:1.8}
+    .search{
+      width:100%;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:var(--panel);
+      color:var(--text);
+      outline:none;
+      margin:10px 0 18px;
+    }
+    .quick-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-bottom:18px;
+    }
+    .mini-card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+    }
+    .mini-card span{
+      display:block;
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:6px;
+    }
+    .mini-card strong{font-size:14px}
+    .nav-title{font-size:12px;color:var(--muted);margin:18px 8px 10px}
+    .nav{display:flex;flex-direction:column;gap:6px}
+    .nav a{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:11px 12px;
+      border-radius:14px;
+      color:var(--text);
+      border:1px solid transparent;
+      font-size:14px;
+    }
+    .nav a:hover,.nav a.active{
+      background:var(--panel);
+      border-color:var(--line);
+    }
+    .main{
+      flex:1;
+      padding:28px 28px 80px;
+      max-width:calc(100vw - 320px);
+    }
+    .hero{
+      background:
+        radial-gradient(circle at top right, rgba(110,168,254,.18), transparent 35%),
+        linear-gradient(135deg,#101938,#131f48 55%, #12214f 100%);
+      border:1px solid rgba(110,168,254,.15);
+      border-radius:28px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+    }
+    .eyebrow{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(110,168,254,.12);
+      color:#cfe1ff;
+      font-size:12px;
+      border:1px solid rgba(110,168,254,.2);
+    }
+    .hero h2{
+      font-size:40px;
+      line-height:1.15;
+      margin:14px 0 12px;
+      max-width:900px;
+    }
+    .hero p{
+      max-width:980px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.9;
+      margin:0;
+    }
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:22px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:var(--panel);
+      color:var(--text);
+      font-weight:600;
+    }
+    .btn.primary{
+      background:linear-gradient(135deg,var(--brand),#7c9cff);
+      color:#09101f;
+      border:none;
+    }
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin:22px 0;
+    }
+    .stat{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:18px;
+    }
+    .stat span{
+      display:block;
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:8px;
+    }
+    .stat strong{font-size:28px}
+    section{margin-top:22px}
+    .section-card{
+      background:rgba(18,25,51,.92);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+    .section-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:18px;
+    }
+    .section-head h3{margin:0;font-size:24px}
+    .section-head p{
+      margin:8px 0 0;
+      color:var(--muted);
+      max-width:850px;
+      line-height:1.8;
+    }
+    .tag{
+      font-size:12px;
+      color:#dbe7ff;
+      padding:8px 11px;
+      border-radius:999px;
+      background:rgba(110,168,254,.12);
+      border:1px solid rgba(110,168,254,.2);
+      white-space:nowrap;
+    }
+    .two-col{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:18px;
+    }
+    .card{
+      background:var(--panel-2);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+    }
+    .card h4{margin:0 0 10px;font-size:18px}
+    .card p,.card li{
+      color:var(--muted);
+      line-height:1.9;
+      font-size:15px;
+    }
+    .card ul{margin:10px 0 0;padding:0 18px 0 0}
+    .pill-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .pill{
+      padding:10px 12px;
+      border-radius:999px;
+      background:#0f1735;
+      border:1px solid var(--line);
+      color:#d8e1ff;
+      font-size:13px;
+    }
+    .roadmap{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+    .phase{
+      padding:18px;
+      border-radius:18px;
+      background:linear-gradient(180deg,#151f42,#101832);
+      border:1px solid var(--line);
+    }
+    .phase strong{
+      display:block;
+      font-size:16px;
+      margin-bottom:8px;
+    }
+    .phase span{
+      display:block;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.8;
+    }
+    .table-wrap{
+      overflow:auto;
+      border:1px solid var(--line);
+      border-radius:18px;
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      background:var(--panel-2);
+    }
+    th,td{
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      text-align:right;
+      vertical-align:top;
+    }
+    th{
+      background:#0f1734;
+      color:#dce6ff;
+      font-size:13px;
+    }
+    td{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+    }
+    .kanban{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+    .kanban-col{
+      background:var(--panel-2);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+    }
+    .kanban-col h4{margin:0 0 12px;font-size:16px}
+    .task{
+      background:#0f1734;
+      border:1px solid var(--line);
+      padding:12px;
+      border-radius:14px;
+      margin-bottom:10px;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+    .footer-note{
+      margin-top:26px;
+      color:var(--muted);
+      text-align:center;
+      font-size:13px;
+    }
+    .mono{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      background:#0b1229;
+      border:1px solid var(--line);
+      padding:4px 8px;
+      border-radius:8px;
+      color:#cfe1ff;
+    }
+    @media (max-width:1180px){
+      .grid-3,.roadmap,.kanban{grid-template-columns:1fr 1fr}
+      .two-col{grid-template-columns:1fr}
+      .main{max-width:none}
+    }
+    @media (max-width:900px){
+      .layout{display:block}
+      .sidebar{
+        position:relative;
+        height:auto;
+        width:100%;
+        border-left:none;
+        border-bottom:1px solid var(--line);
+      }
+      .main{
+        max-width:100%;
+        padding:20px 16px 60px;
+      }
+      .hero h2{font-size:28px}
+      .grid-3,.roadmap,.kanban,.quick-grid{grid-template-columns:1fr}
+    }
+    @media print{
+      .sidebar,.hero-actions{display:none}
+      body{background:white;color:black}
+      .main{max-width:100%;padding:0}
+      .section-card,.card,.stat,.hero{
+        box-shadow:none;
+        background:white;
+        color:black;
+        border:1px solid #ddd;
+      }
+      .card p,.card li,.section-head p,td{color:#333}
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>AdPilot Project Hub</h1>
+        <p>مرجعك الشخصي الكامل للمشروع: الرؤية، الهيكلة، المتطلبات، الخطة، القرارات، والتتبع التنفيذي.</p>
+      </div>
+
+      <input id="searchBox" class="search" type="text" placeholder="ابحث داخل الصفحة..." />
+
+      <div class="quick-grid">
+        <div class="mini-card"><span>نوع المشروع</span><strong>AI AdTech Platform</strong></div>
+        <div class="mini-card"><span>السوق الأول</span><strong>السعودية</strong></div>
+        <div class="mini-card"><span>MVP الأول</span><strong>Snapchat</strong></div>
+        <div class="mini-card"><span>الوضع</span><strong>Planning Mode</strong></div>
+      </div>
+
+      <div class="nav-title">التنقل السريع</div>
+      <nav class="nav" id="nav">
+        <a href="#overview">نظرة عامة <span>01</span></a>
+        <a href="#vision">الرؤية والتموضع <span>02</span></a>
+        <a href="#problem">المشكلة والفرصة <span>03</span></a>
+        <a href="#solution">الحل وتجربة المنتج <span>04</span></a>
+        <a href="#market">السوق والعميل المثالي <span>05</span></a>
+        <a href="#features">الميزات الأساسية <span>06</span></a>
+        <a href="#architecture">الهيكلية التقنية <span>07</span></a>
+        <a href="#business">نموذج العمل <span>08</span></a>
+        <a href="#roadmap">خارطة التنفيذ <span>09</span></a>
+        <a href="#growth">النمو والتسويق <span>10</span></a>
+        <a href="#finance">التقديرات المالية <span>11</span></a>
+        <a href="#execution">لوحة التنفيذ <span>12</span></a>
+        <a href="#notes">سجل القرارات والملاحظات <span>13</span></a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="hero">
+        <div class="eyebrow">Private Founder Blueprint · Internal Use Only</div>
+        <h2>منصة ذكية لإطلاق الإعلانات ومتابعتها وتحسينها تلقائيًا للشركات الصغيرة والمتوسطة</h2>
+        <p>
+          هذه الصفحة ليست صفحة بيع، بل <strong>مركز تشغيل خاص بالمشروع</strong>. الفكرة هنا إن كل ما يخص المشروع يكون محفوظ في مكان واحد: الرؤية، تفاصيل السوق، تصور المنتج، الهيكلية التقنية، الخطة التنفيذية، والتقديرات المالية، بحيث تقدر ترجع لها بأي وقت وتبني عليها بدون تشتت.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#overview">ابدأ من النظرة العامة</a>
+          <a class="btn" href="javascript:window.print()">طباعة / حفظ PDF</a>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="stat"><span>Core Positioning</span><strong>AI Ads Autopilot</strong></div>
+        <div class="stat"><span>Main Value</span><strong>ROAS Optimization</strong></div>
+        <div class="stat"><span>Primary Entry Point</span><strong>4 Inputs Only</strong></div>
+      </div>
+
+      <section id="overview">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>01. نظرة عامة على المشروع</h3>
+              <p>تعريف مختصر وواضح للمشروع، استخدامه، الجمهور الأساسي، والقيمة التي سيقدمها فعليًا في السوق.</p>
+            </div>
+            <div class="tag">Project Overview</div>
+          </div>
+          <div class="two-col">
+            <div class="card">
+              <h4>تعريف المشروع</h4>
+              <p>
+                <strong>AdPilot</strong> منصة إعلانية ذكية تساعد أصحاب الأنشطة الصغيرة والمتوسطة على إطلاق حملات رقمية فعالة بأقل قدر ممكن من التعقيد. بدلاً من الدخول في تفاصيل منصات الإعلانات التقليدية، يقوم المستخدم فقط بإدخال:
+              </p>
+              <ul>
+                <li>نوع النشاط</li>
+                <li>المدينة</li>
+                <li>الميزانية</li>
+                <li>الهدف التسويقي</li>
+              </ul>
+              <p>
+                بعدها يقوم النظام بتحويل هذه المدخلات إلى حملة جاهزة تشمل الاستراتيجية، الاستهداف، النصوص، التصاميم الأولية، والإطلاق والمتابعة والتحسين.
+              </p>
+            </div>
+            <div class="card">
+              <h4>لماذا هذا المشروع؟</h4>
+              <ul>
+                <li>أغلب أصحاب المشاريع عندهم احتياج إعلاني لكن ما عندهم خبرة تشغيلية.</li>
+                <li>المنصات الإعلانية التقليدية معقدة جدًا على المبتدئ.</li>
+                <li>الوكالات غالبًا مكلفة أو بطيئة أو غير شفافة.</li>
+                <li>أكبر فجوة في السوق ليست إطلاق الإعلان فقط، بل تحسين العائد منه.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="vision">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>02. الرؤية والتموضع</h3>
+              <p>كيف يتم تعريف المشروع داخل السوق؟ وما هو التمركز الذي يميزه عن أي أداة إعلانية تقليدية؟</p>
+            </div>
+            <div class="tag">Vision & Positioning</div>
+          </div>
+          <div class="two-col">
+            <div class="card">
+              <h4>الرؤية</h4>
+              <p>
+                بناء أبسط وأذكى منصة في المنطقة لتشغيل الإعلانات الرقمية للشركات الصغيرة والمتوسطة، بحيث تتحول من مجرد أداة لإطلاق الحملات إلى <span class="mono">AI Growth Engine</span> يدير النمو الإعلاني بشكل شبه ذاتي.
+              </p>
+            </div>
+            <div class="card">
+              <h4>التموضع</h4>
+              <div class="pill-list">
+                <div class="pill">ليست مجرد لوحة إعلانات</div>
+                <div class="pill">تركز على الأداء وليس النشر فقط</div>
+                <div class="pill">واجهة بسيطة جدًا</div>
+                <div class="pill">مناسبة للسوق السعودي أولاً</div>
+                <div class="pill">تبني على WhatsApp Leads</div>
+                <div class="pill">الذكاء الاصطناعي في صلب المنتج</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="problem">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>03. المشكلة والفرصة</h3>
+              <p>صياغة المشكلة بوضوح أهم من صياغة الحل. هذا القسم يحدد لماذا سيهتم العميل بالمشروع أساسًا.</p>
+            </div>
+            <div class="tag">Problem / Opportunity</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>المشكلة</th>
+                  <th>الوضع الحالي في السوق</th>
+                  <th>الفرصة داخل AdPilot</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>تعقيد منصات الإعلانات</td>
+                  <td>العميل يحتاج يتعامل مع إعدادات كثيرة: هدف، جمهور، تتبع، ميزانية، تنسيقات، وربط</td>
+                  <td>تبسيط التجربة إلى 4 مدخلات فقط</td>
+                </tr>
+                <tr>
+                  <td>ضعف المعرفة التسويقية</td>
+                  <td>العميل لا يعرف يكتب إعلان جيد أو يختار جمهور مناسب</td>
+                  <td>AI Campaign Builder + AI Copy + Audience Builder</td>
+                </tr>
+                <tr>
+                  <td>ضعف تحسين الأداء</td>
+                  <td>غالبًا بعد إطلاق الحملة لا يعرف العميل ماذا يعدل ولماذا</td>
+                  <td>Auto Budget Optimizer + توصيات تلقائية</td>
+                </tr>
+                <tr>
+                  <td>اعتماد عالي على الوكالات</td>
+                  <td>الوكالة مكلفة، أبطأ، وتتطلب متابعة مستمرة</td>
+                  <td>نموذج ذاتي بسيط + دعم احترافي عند الحاجة</td>
+                </tr>
+                <tr>
+                  <td>فصل الإعلانات عن الواتساب والـ Leads</td>
+                  <td>العميل يحصل Leads لكن بدون تنظيم أو متابعة واضحة</td>
+                  <td>ربط الإعلان بالواتساب وتتبع العميل المحتمل داخل النظام</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="solution">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>04. الحل وتجربة المنتج</h3>
+              <p>كيف سيشعر المستخدم عندما يستخدم المنصة؟ وما هي الرحلة من البداية إلى النتيجة؟</p>
+            </div>
+            <div class="tag">Solution & UX Flow</div>
+          </div>
+          <div class="two-col">
+            <div class="card">
+              <h4>رحلة الاستخدام الأساسية</h4>
+              <ul>
+                <li>المستخدم يدخل نوع النشاط، المدينة، الميزانية، الهدف.</li>
+                <li>النظام يحلل النشاط ويقترح المنصة الإعلانية الأنسب.</li>
+                <li>يتم توليد نصوص إعلانية وتصاميم أولية.</li>
+                <li>المستخدم يراجع ويوافق.</li>
+                <li>النظام ينشئ الحملة ويطلقها.</li>
+                <li>يبدأ التحسين التلقائي والمتابعة عبر لوحة مؤشرات وتقارير.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>القيمة النهائية للمستخدم</h4>
+              <p>
+                المستخدم لا يدفع مقابل “إطلاق إعلان” فقط، بل يدفع مقابل <strong>نتيجة أقرب للنجاح</strong>. هذا التحول مهم جدًا في تسعير المنتج، وفي بناء الرسالة التسويقية، وفي طريقة تطوير الخصائص لاحقًا.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="market">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>05. السوق والعميل المثالي</h3>
+              <p>من هو العميل الذي نريد أن نخدمه أولاً؟ وما هي الحالات الأقرب للنجاح في المرحلة الأولى؟</p>
+            </div>
+            <div class="tag">Market & ICP</div>
+          </div>
+          <div class="two-col">
+            <div class="card">
+              <h4>العميل المثالي – ICP</h4>
+              <ul>
+                <li>صاحب مشروع صغير أو متوسط.</li>
+                <li>يعتمد على الطلبات أو الرسائل أو الحجوزات.</li>
+                <li>يريد نتائج بسرعة مع بساطة في الإعداد.</li>
+                <li>لا يريد التعلم العميق لمنصات الإعلانات.</li>
+                <li>مستعد يصرف ميزانيات صغيرة إلى متوسطة باستمرار.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>أفضل القطاعات للبدء</h4>
+              <div class="pill-list">
+                <div class="pill">مطاعم وكافيهات</div>
+                <div class="pill">عيادات وخدمات محلية</div>
+                <div class="pill">متاجر إلكترونية صغيرة</div>
+                <div class="pill">صالونات وخدمات نسائية</div>
+                <div class="pill">خدمات منزلية</div>
+                <div class="pill">أنشطة تعتمد على واتساب</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>06. الميزات الأساسية</h3>
+              <p>قائمة واضحة بالخصائص الجوهرية، مع فصل ما هو أساسي في الـ MVP عما يمكن تأجيله لاحقًا.</p>
+            </div>
+            <div class="tag">Core Features</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>الميزة</th>
+                  <th>الوصف</th>
+                  <th>MVP</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>AI Campaign Builder</td>
+                  <td>تحويل 4 مدخلات إلى هيكل حملة واستهداف أولي</td>
+                  <td>نعم</td>
+                </tr>
+                <tr>
+                  <td>AI Copy Generator</td>
+                  <td>توليد هوكات ونصوص CTA ووصف إعلاني</td>
+                  <td>نعم</td>
+                </tr>
+                <tr>
+                  <td>AI Creative Generator</td>
+                  <td>إنشاء تصاميم أولية للإعلانات</td>
+                  <td>مرحلة لاحقة</td>
+                </tr>
+                <tr>
+                  <td>Ads API Integration</td>
+                  <td>ربط مباشر مع المنصة الإعلانية الأساسية</td>
+                  <td>نعم</td>
+                </tr>
+                <tr>
+                  <td>Auto Budget Optimizer</td>
+                  <td>تحسين توزيع الميزانية بين الإعلانات بناءً على الأداء</td>
+                  <td>نسخة مبسطة</td>
+                </tr>
+                <tr>
+                  <td>WhatsApp Lead Tracking</td>
+                  <td>ربط الحملة مع واتساب وتتبع العملاء المحتملين</td>
+                  <td>نعم</td>
+                </tr>
+                <tr>
+                  <td>Analytics Dashboard</td>
+                  <td>عرض CTR, CPM, CPC, Leads, Spend, CPA</td>
+                  <td>نعم</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="architecture">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>07. الهيكلية التقنية</h3>
+              <p>التصور البنيوي للمشروع، وكيف تتحرك البيانات من المستخدم حتى التنفيذ والتحليل.</p>
+            </div>
+            <div class="tag">Architecture</div>
+          </div>
+
+          <div class="card">
+            <h4>التدفق الأساسي</h4>
+            <p>User Input Layer → AI Layer → Ads Engine → Optimization Engine → Analytics & Leads Layer</p>
+          </div>
+
+          <div class="roadmap" style="margin-top:14px">
+            <div class="phase">
+              <strong>User Layer</strong>
+              <span>واجهة بسيطة جدًا عبر الويب أو الجوال لإدخال النشاط، المدينة، الميزانية، والهدف.</span>
+            </div>
+            <div class="phase">
+              <strong>AI Layer</strong>
+              <span>LLM لتحليل المدخلات، بناء الاستراتيجية، اقتراح الجمهور، وتوليد النصوص الإعلانية.</span>
+            </div>
+            <div class="phase">
+              <strong>Ads Engine</strong>
+              <span>ربط API مباشر لإنشاء الحملات، جدولة الإطلاق، وسحب نتائج الأداء.</span>
+            </div>
+            <div class="phase">
+              <strong>Analytics / CRM</strong>
+              <span>تخزين النتائج، تتبع الـ Leads، وإرسال ملخصات الأداء اليومية أو الأسبوعية.</span>
+            </div>
+          </div>
+
+          <div class="two-col" style="margin-top:18px">
+            <div class="card">
+              <h4>Tech Stack المقترح</h4>
+              <ul>
+                <li>Frontend: Next.js</li>
+                <li>Mobile لاحقًا: React Native</li>
+                <li>Backend: Node.js + TypeScript</li>
+                <li>Database: PostgreSQL</li>
+                <li>Cache / Queue: Redis</li>
+                <li>AI: OpenAI / Anthropic</li>
+                <li>Infra: AWS أو GCP</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>نماذج البيانات الأساسية</h4>
+              <div class="pill-list">
+                <div class="pill">Users</div>
+                <div class="pill">Campaigns</div>
+                <div class="pill">Creatives</div>
+                <div class="pill">Ad Accounts</div>
+                <div class="pill">Performance Logs</div>
+                <div class="pill">Leads</div>
+                <div class="pill">Plans</div>
+                <div class="pill">Decision Logs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="business">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>08. نموذج العمل</h3>
+              <p>كيف سيحقق المشروع الإيراد؟ وما هو منطق التسعير الأفضل في البداية؟</p>
+            </div>
+            <div class="tag">Business Model</div>
+          </div>
+          <div class="two-col">
+            <div class="card">
+              <h4>مصادر الإيرادات</h4>
+              <ul>
+                <li>اشتراكات شهرية حسب الباقة.</li>
+                <li>عمولة على الإنفاق الإعلاني المدار.</li>
+                <li>خدمات مدارة أو دعم مخصص للحسابات الكبيرة.</li>
+                <li>إضافات مدفوعة مثل Creative Packs أو WhatsApp Automation.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>التسعير الأولي المقترح</h4>
+              <ul>
+                <li>Starter — 300 SAR</li>
+                <li>Growth — 500 SAR</li>
+                <li>Pro — 800 SAR</li>
+                <li>+ نسبة أو رسوم مرتبطة بإدارة الإنفاق الإعلاني حسب المرحلة</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="roadmap">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>09. خارطة التنفيذ</h3>
+              <p>خطة البناء المرحلية من الـ MVP حتى التوسع، بحيث يكون التنفيذ واضح ومركز وليس مشتت.</p>
+            </div>
+            <div class="tag">Roadmap</div>
+          </div>
+          <div class="roadmap">
+            <div class="phase">
+              <strong>Phase 1 — MVP</strong>
+              <span>تركيز على منصة واحدة وسوق واحد. بناء الأساسيات + لوحة الأداء + الربط الأول.</span>
+            </div>
+            <div class="phase">
+              <strong>Phase 2 — AI Layer</strong>
+              <span>دمج AI Campaign Builder و AI Copy Generation وتحسين تجربة إدخال البيانات.</span>
+            </div>
+            <div class="phase">
+              <strong>Phase 3 — Optimization</strong>
+              <span>إضافة Auto Budget Optimizer و WhatsApp Lead Tracking وربط أوضح للنتائج.</span>
+            </div>
+            <div class="phase">
+              <strong>Phase 4 — Scale</strong>
+              <span>إضافة منصات جديدة، تعميق التحليلات، وبناء طبقة نمو وتسويق أكثر اتساعًا.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="growth">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>10. النمو والتسويق</h3>
+              <p>كيف سيصل المشروع لأول عملائه؟ وكيف يبني موثوقية في السوق من البداية؟</p>
+            </div>
+            <div class="tag">Growth Strategy</div>
+          </div>
+          <div class="two-col">
+            <div class="card">
+              <h4>القنوات الأساسية</h4>
+              <ul>
+                <li>محتوى تعليمي متخصص في الإعلانات.</li>
+                <li>شراكات مع منصات متاجر إلكترونية وحاضنات أعمال.</li>
+                <li>قائمة انتظار + صفحة تعريفية موجهة لقطاعات محددة.</li>
+                <li>حالات استخدام فعلية مع نتائج موثقة.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>الرسالة التسويقية الأساسية</h4>
+              <p>
+                الرسالة ليست: <em>أطلق إعلانك بسهولة</em> فقط.
+                الرسالة الأقوى: <strong>دع النظام يبني حملتك ويحسن أداءها بدل ما تتوه في تفاصيل المنصات</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="finance">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>11. التقديرات المالية الأولية</h3>
+              <p>هذه أرقام مرجعية تساعد في تصور حجم المشروع، وليست ميزانية نهائية أو التزام تنفيذي.</p>
+            </div>
+            <div class="tag">Financial View</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>المؤشر</th>
+                  <th>تقدير أولي</th>
+                  <th>ملاحظة</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>عدد العملاء المستهدف أول سنة</td>
+                  <td>300 – 1000</td>
+                  <td>بحسب سرعة التحقق من المنتج والقنوات</td>
+                </tr>
+                <tr>
+                  <td>متوسط الإيراد الشهري لكل عميل</td>
+                  <td>300 – 800 ريال</td>
+                  <td>بحسب الباقة والخدمات الإضافية</td>
+                </tr>
+                <tr>
+                  <td>MRR المستهدف بعد مرحلة الإثبات</td>
+                  <td>150,000 – 500,000 ريال</td>
+                  <td>مرحلة أولية منطقية</td>
+                </tr>
+                <tr>
+                  <td>المؤشر الأهم</td>
+                  <td>Managed Ad Spend</td>
+                  <td>دليل على اعتماد السوق على المنصة</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="execution">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>12. لوحة التنفيذ</h3>
+              <p>قسم عملي لتقسيم العمل الحالي إلى: تم، جارٍ، قادم. عدّل عليه كلما تقدمت في المشروع.</p>
+            </div>
+            <div class="tag">Execution Board</div>
+          </div>
+          <div class="kanban">
+            <div class="kanban-col">
+              <h4>Done / مثبت</h4>
+              <div class="task">تحديد الفكرة العامة والتموضع الأساسي للمشروع.</div>
+              <div class="task">صياغة الرؤية الأولية والقيمة الأساسية.</div>
+              <div class="task">تحديد السوق الأول: السعودية.</div>
+            </div>
+            <div class="kanban-col">
+              <h4>In Progress / جاري</h4>
+              <div class="task">توثيق الهيكلية التقنية بالتفصيل.</div>
+              <div class="task">ترتيب خطة MVP والخصائص الأساسية.</div>
+              <div class="task">بناء صفحة المشروع المرجعية الحالية.</div>
+            </div>
+            <div class="kanban-col">
+              <h4>Next / القادم</h4>
+              <div class="task">كتابة PRD احترافي للنسخة الأولى.</div>
+              <div class="task">تصميم الواجهة الأولية Wireframe.</div>
+              <div class="task">تجهيز Prompt تنفيذي للمطور أو الأداة البرمجية.</div>
+              <div class="task">بدء بناء النسخة الأولى من المشروع.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="notes">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>13. سجل القرارات والملاحظات</h3>
+              <p>أهم جزء على المدى الطويل. أي قرار جديد، تغيير اتجاه، فرضية، أو ملاحظة سوقية يتم توثيقها هنا.</p>
+            </div>
+            <div class="tag">Decision Log</div>
+          </div>
+          <div class="card">
+            <h4>قالب مقترح للتسجيل</h4>
+            <ul>
+              <li><strong>التاريخ:</strong> متى اتخذ القرار؟</li>
+              <li><strong>نوع القرار:</strong> منتج / تقنية / تسعير / سوق / تموضع</li>
+              <li><strong>ما الذي تغير؟</strong> صف القرار بوضوح</li>
+              <li><strong>السبب:</strong> لماذا اتخذت هذا القرار؟</li>
+              <li><strong>الأثر:</strong> ما الذي سيتأثر به؟</li>
+              <li><strong>هل يحتاج مراجعة لاحقًا؟</strong> نعم / لا</li>
+            </ul>
+          </div>
+          <div class="footer-note">
+            هذا الملف مصمم ليكون مرجعك الشخصي الدائم للمشروع. عدّله، حدّثه، وابنِ عليه في كل مرحلة جديدة.
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const navLinks = [...document.querySelectorAll('#nav a')];
+    const sections = navLinks.map(a => document.querySelector(a.getAttribute('href')));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.remove('active'));
+          const active = document.querySelector(`#nav a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0.1 });
+
+    sections.forEach(section => section && observer.observe(section));
+
+    const searchBox = document.getElementById('searchBox');
+    searchBox.addEventListener('input', function() {
+      const q = this.value.trim().toLowerCase();
+      navLinks.forEach(link => {
+        const section = document.querySelector(link.getAttribute('href'));
+        const text = (section?.innerText || '').toLowerCase();
+        link.style.display = !q || text.includes(q) ? 'flex' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
