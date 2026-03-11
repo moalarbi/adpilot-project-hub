@@ -1,0 +1,18 @@
+    </main>
+  </div>
+
+  <script>
+    const searchBox = document.getElementById('searchBox');
+    if (searchBox) {
+      searchBox.addEventListener('input', function() {
+        const q = this.value.trim().toLowerCase();
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+          const text = section.innerText.toLowerCase();
+          section.style.display = !q || text.includes(q) ? 'block' : 'none';
+        });
+      });
+    }
+  </script>
+</body>
+</html>

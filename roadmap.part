@@ -1,0 +1,59 @@
+      <section id="roadmap">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>09. خارطة التنفيذ</h3>
+              <p>خطة البناء المرحلية من الـ MVP حتى التوسع، بحيث يكون التنفيذ واضح ومركز وليس مشتت.</p>
+            </div>
+            <div class="tag">Roadmap</div>
+          </div>
+          <div class="roadmap">
+            <div class="phase">
+              <strong>Phase 1 — MVP</strong>
+              <span>تركيز على منصة واحدة وسوق واحد. بناء الأساسيات + لوحة الأداء + الربط الأول.</span>
+            </div>
+            <div class="phase">
+              <strong>Phase 2 — AI Layer</strong>
+              <span>دمج AI Campaign Builder و AI Copy Generation وتحسين تجربة إدخال البيانات.</span>
+            </div>
+            <div class="phase">
+              <strong>Phase 3 — Optimization</strong>
+              <span>إضافة Auto Budget Optimizer و WhatsApp Lead Tracking وربط أوضح للنتائج.</span>
+            </div>
+            <div class="phase">
+              <strong>Phase 4 — Scale</strong>
+              <span>إضافة منصات جديدة، تعميق التحليلات، وبناء طبقة نمو وتسويق أكثر اتساعًا.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="growth">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>10. النمو والتسويق</h3>
+              <p>كيف سيصل المشروع لأول عملائه؟ وكيف يبني موثوقية في السوق من البداية؟</p>
+            </div>
+            <div class="tag">Growth Strategy</div>
+          </div>
+          <div class="two-col">
+            <div class="card">
+              <h4>القنوات الأساسية</h4>
+              <ul>
+                <li>محتوى تعليمي متخصص في الإعلانات.</li>
+                <li>شراكات مع منصات متاجر إلكترونية وحاضنات أعمال.</li>
+                <li>قائمة انتظار + صفحة تعريفية موجهة لقطاعات محددة.</li>
+                <li>حالات استخدام فعلية مع نتائج موثقة.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>الرسالة التسويقية الأساسية</h4>
+              <p>
+                الرسالة ليست: <em>أطلق إعلانك بسهولة</em> فقط.
+                الرسالة الأقوى: <strong>دع النظام يبني حملتك ويحسن أداءها بدل ما تتوه في تفاصيل المنصات</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>

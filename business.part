@@ -1,0 +1,31 @@
+      <section id="business">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>08. نموذج العمل</h3>
+              <p>كيف سيحقق المشروع الإيراد؟ وما هو منطق التسعير الأفضل في البداية؟</p>
+            </div>
+            <div class="tag">Business Model</div>
+          </div>
+          <div class="two-col">
+            <div class="card">
+              <h4>مصادر الإيرادات</h4>
+              <ul>
+                <li>اشتراكات شهرية حسب الباقة.</li>
+                <li>عمولة على الإنفاق الإعلاني المدار.</li>
+                <li>خدمات مدارة أو دعم مخصص للحسابات الكبيرة.</li>
+                <li>إضافات مدفوعة مثل Creative Packs أو WhatsApp Automation.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>التسعير الأولي المقترح</h4>
+              <ul>
+                <li>Starter — 300 SAR</li>
+                <li>Growth — 500 SAR</li>
+                <li>Pro — 800 SAR</li>
+                <li>+ نسبة أو رسوم مرتبطة بإدارة الإنفاق الإعلاني حسب المرحلة</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>

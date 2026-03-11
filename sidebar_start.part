@@ -1,0 +1,19 @@
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>AdPilot Project Hub</h1>
+        <p>مرجعك الشخصي الكامل للمشروع: الرؤية، الهيكلة، المتطلبات، الخطة، القرارات، والتتبع التنفيذي.</p>
+      </div>
+
+      <input id="searchBox" class="search" type="text" placeholder="ابحث داخل الصفحة..." />
+
+      <div class="quick-grid">
+        <div class="mini-card"><span>نوع المشروع</span><strong>AI AdTech Platform</strong></div>
+        <div class="mini-card"><span>السوق الأول</span><strong>السعودية</strong></div>
+        <div class="mini-card"><span>MVP الأول</span><strong>Snapchat</strong></div>
+        <div class="mini-card"><span>الوضع</span><strong>Planning Mode</strong></div>
+      </div>
+
+      <div class="nav-title">التنقل السريع</div>
+      <nav class="nav" id="nav">

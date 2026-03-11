@@ -1,0 +1,6 @@
+        <a href="index.html" id="nav-index">نظرة عامة <span>01</span></a>
+        <a href="market.html" id="nav-market">السوق والعميل <span>02</span></a>
+        <a href="architecture.html" id="nav-architecture">الهيكلية التقنية <span>03</span></a>
+        <a href="roadmap.html" id="nav-roadmap">خارطة الطريق <span>04</span></a>
+        <a href="finance.html" id="nav-finance">المالية والتنفيذ <span>05</span></a>
+      </nav>

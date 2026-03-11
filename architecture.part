@@ -1,0 +1,63 @@
+      <section id="architecture">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>07. الهيكلية التقنية</h3>
+              <p>التصور البنيوي للمشروع، وكيف تتحرك البيانات من المستخدم حتى التنفيذ والتحليل.</p>
+            </div>
+            <div class="tag">Architecture</div>
+          </div>
+
+          <div class="card">
+            <h4>التدفق الأساسي</h4>
+            <p>User Input Layer → AI Layer → Ads Engine → Optimization Engine → Analytics & Leads Layer</p>
+          </div>
+
+          <div class="roadmap" style="margin-top:14px">
+            <div class="phase">
+              <strong>User Layer</strong>
+              <span>واجهة بسيطة جدًا عبر الويب أو الجوال لإدخال النشاط، المدينة، الميزانية، والهدف.</span>
+            </div>
+            <div class="phase">
+              <strong>AI Layer</strong>
+              <span>LLM لتحليل المدخلات، بناء الاستراتيجية، اقتراح الجمهور، وتوليد النصوص الإعلانية.</span>
+            </div>
+            <div class="phase">
+              <strong>Ads Engine</strong>
+              <span>ربط API مباشر لإنشاء الحملات، جدولة الإطلاق، وسحب نتائج الأداء.</span>
+            </div>
+            <div class="phase">
+              <strong>Analytics / CRM</strong>
+              <span>تخزين النتائج، تتبع الـ Leads، وإرسال ملخصات الأداء اليومية أو الأسبوعية.</span>
+            </div>
+          </div>
+
+          <div class="two-col" style="margin-top:18px">
+            <div class="card">
+              <h4>Tech Stack المقترح</h4>
+              <ul>
+                <li>Frontend: Next.js</li>
+                <li>Mobile لاحقًا: React Native</li>
+                <li>Backend: Node.js + TypeScript</li>
+                <li>Database: PostgreSQL</li>
+                <li>Cache / Queue: Redis</li>
+                <li>AI: OpenAI / Anthropic</li>
+                <li>Infra: AWS أو GCP</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>نماذج البيانات الأساسية</h4>
+              <div class="pill-list">
+                <div class="pill">Users</div>
+                <div class="pill">Campaigns</div>
+                <div class="pill">Creatives</div>
+                <div class="pill">Ad Accounts</div>
+                <div class="pill">Performance Logs</div>
+                <div class="pill">Leads</div>
+                <div class="pill">Plans</div>
+                <div class="pill">Decision Logs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>

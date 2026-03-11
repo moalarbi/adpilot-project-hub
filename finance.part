@@ -1,0 +1,103 @@
+      <section id="finance">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>11. التقديرات المالية الأولية</h3>
+              <p>هذه أرقام مرجعية تساعد في تصور حجم المشروع، وليست ميزانية نهائية أو التزام تنفيذي.</p>
+            </div>
+            <div class="tag">Financial View</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>المؤشر</th>
+                  <th>تقدير أولي</th>
+                  <th>ملاحظة</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>عدد العملاء المستهدف أول سنة</td>
+                  <td>300 – 1000</td>
+                  <td>بحسب سرعة التحقق من المنتج والقنوات</td>
+                </tr>
+                <tr>
+                  <td>متوسط الإيراد الشهري لكل عميل</td>
+                  <td>300 – 800 ريال</td>
+                  <td>بحسب الباقة والخدمات الإضافية</td>
+                </tr>
+                <tr>
+                  <td>MRR المستهدف بعد مرحلة الإثبات</td>
+                  <td>150,000 – 500,000 ريال</td>
+                  <td>مرحلة أولية منطقية</td>
+                </tr>
+                <tr>
+                  <td>المؤشر الأهم</td>
+                  <td>Managed Ad Spend</td>
+                  <td>دليل على اعتماد السوق على المنصة</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="execution">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>12. لوحة التنفيذ</h3>
+              <p>قسم عملي لتقسيم العمل الحالي إلى: تم، جارٍ، قادم. عدّل عليه كلما تقدمت في المشروع.</p>
+            </div>
+            <div class="tag">Execution Board</div>
+          </div>
+          <div class="kanban">
+            <div class="kanban-col">
+              <h4>Done / مثبت</h4>
+              <div class="task">تحديد الفكرة العامة والتموضع الأساسي للمشروع.</div>
+              <div class="task">صياغة الرؤية الأولية والقيمة الأساسية.</div>
+              <div class="task">تحديد السوق الأول: السعودية.</div>
+            </div>
+            <div class="kanban-col">
+              <h4>In Progress / جاري</h4>
+              <div class="task">توثيق الهيكلية التقنية بالتفصيل.</div>
+              <div class="task">ترتيب خطة MVP والخصائص الأساسية.</div>
+              <div class="task">بناء صفحة المشروع المرجعية الحالية.</div>
+            </div>
+            <div class="kanban-col">
+              <h4>Next / القادم</h4>
+              <div class="task">كتابة PRD احترافي للنسخة الأولى.</div>
+              <div class="task">تصميم الواجهة الأولية Wireframe.</div>
+              <div class="task">تجهيز Prompt تنفيذي للمطور أو الأداة البرمجية.</div>
+              <div class="task">بدء بناء النسخة الأولى من المشروع.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="notes">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>13. سجل القرارات والملاحظات</h3>
+              <p>أهم جزء على المدى الطويل. أي قرار جديد، تغيير اتجاه، فرضية، أو ملاحظة سوقية يتم توثيقها هنا.</p>
+            </div>
+            <div class="tag">Decision Log</div>
+          </div>
+          <div class="card">
+            <h4>قالب مقترح للتسجيل</h4>
+            <ul>
+              <li><strong>التاريخ:</strong> متى اتخذ القرار؟</li>
+              <li><strong>نوع القرار:</strong> منتج / تقنية / تسعير / سوق / تموضع</li>
+              <li><strong>ما الذي تغير؟</strong> صف القرار بوضوح</li>
+              <li><strong>السبب:</strong> لماذا اتخذت هذا القرار؟</li>
+              <li><strong>الأثر:</strong> ما الذي سيتأثر به؟</li>
+              <li><strong>هل يحتاج مراجعة لاحقًا؟</strong> نعم / لا</li>
+            </ul>
+          </div>
+          <div class="footer-note">
+            هذا الملف مصمم ليكون مرجعك الشخصي الدائم للمشروع. عدّله، حدّثه، وابنِ عليه في كل مرحلة جديدة.
+          </div>
+        </div>
+      </section>

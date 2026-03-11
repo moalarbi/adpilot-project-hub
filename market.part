@@ -1,0 +1,94 @@
+      <section id="market">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>05. السوق والعميل المثالي</h3>
+              <p>من هو العميل الذي نريد أن نخدمه أولاً؟ وما هي الحالات الأقرب للنجاح في المرحلة الأولى؟</p>
+            </div>
+            <div class="tag">Market & ICP</div>
+          </div>
+          <div class="two-col">
+            <div class="card">
+              <h4>العميل المثالي – ICP</h4>
+              <ul>
+                <li>صاحب مشروع صغير أو متوسط.</li>
+                <li>يعتمد على الطلبات أو الرسائل أو الحجوزات.</li>
+                <li>يريد نتائج بسرعة مع بساطة في الإعداد.</li>
+                <li>لا يريد التعلم العميق لمنصات الإعلانات.</li>
+                <li>مستعد يصرف ميزانيات صغيرة إلى متوسطة باستمرار.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>أفضل القطاعات للبدء</h4>
+              <div class="pill-list">
+                <div class="pill">مطاعم وكافيهات</div>
+                <div class="pill">عيادات وخدمات محلية</div>
+                <div class="pill">متاجر إلكترونية صغيرة</div>
+                <div class="pill">صالونات وخدمات نسائية</div>
+                <div class="pill">خدمات منزلية</div>
+                <div class="pill">أنشطة تعتمد على واتساب</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h3>06. الميزات الأساسية</h3>
+              <p>قائمة واضحة بالخصائص الجوهرية، مع فصل ما هو أساسي في الـ MVP عما يمكن تأجيله لاحقًا.</p>
+            </div>
+            <div class="tag">Core Features</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>الميزة</th>
+                  <th>الوصف</th>
+                  <th>MVP</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>AI Campaign Builder</td>
+                  <td>تحويل 4 مدخلات إلى هيكل حملة واستهداف أولي</td>
+                  <td>نعم</td>
+                </tr>
+                <tr>
+                  <td>AI Copy Generator</td>
+                  <td>توليد هوكات ونصوص CTA ووصف إعلاني</td>
+                  <td>نعم</td>
+                </tr>
+                <tr>
+                  <td>AI Creative Generator</td>
+                  <td>إنشاء تصاميم أولية للإعلانات</td>
+                  <td>مرحلة لاحقة</td>
+                </tr>
+                <tr>
+                  <td>Ads API Integration</td>
+                  <td>ربط مباشر مع المنصة الإعلانية الأساسية</td>
+                  <td>نعم</td>
+                </tr>
+                <tr>
+                  <td>Auto Budget Optimizer</td>
+                  <td>تحسين توزيع الميزانية بين الإعلانات بناءً على الأداء</td>
+                  <td>نسخة مبسطة</td>
+                </tr>
+                <tr>
+                  <td>WhatsApp Lead Tracking</td>
+                  <td>ربط الحملة مع واتساب وتتبع العملاء المحتملين</td>
+                  <td>نعم</td>
+                </tr>
+                <tr>
+                  <td>Analytics Dashboard</td>
+                  <td>عرض CTR, CPM, CPC, Leads, Spend, CPA</td>
+                  <td>نعم</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
